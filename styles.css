@@ -1,19 +1,32 @@
+/* ==========================================================================
+   Task Manager - INFO 153A/253A Assignment 1
+   Layout method: CSS Grid (used consistently throughout)
+   ========================================================================== */
+
+/* ========== DESIGN TOKENS ========== */
 :root {
+    /* Colors */
     --color-header-bg: #dc4c3e;
     --color-header-text: #ffffff;
     --color-sidebar-bg: #fefbf2;
     --color-sidebar-text: #000000;
     --color-count-text: #7e7d79;
     --color-content-bg: #ffffff;
+    --color-search-bg: rgba(255, 255, 255, 0.2);
+    --color-search-bg-focus: rgba(255, 255, 255, 0.3);
+    --color-search-placeholder: rgba(255, 255, 255, 0.85);
 
+    /* Typography */
     --font-family-base: "Roboto", "Helvetica Neue", Arial, sans-serif;
     --font-size-base: 14px;
     --font-size-count: 12px;
     --font-size-title: 20px;
 
+    /* Layout */
     --sidebar-width: 300px;
 }
 
+/* ========== BASE / RESET ========== */
 *,
 *::before,
 *::after {
@@ -28,12 +41,14 @@ body {
     color: var(--color-sidebar-text);
     background-color: var(--color-content-bg);
 
+    /* Page layout: full-width header above a fixed sidebar and fluid content */
     display: grid;
     grid-template-columns: var(--sidebar-width) 1fr;
     grid-template-rows: auto 1fr;
     min-height: 100vh;
 }
 
+/* Hides content visually while keeping it available to screen readers */
 .visually-hidden {
     position: absolute;
     width: 1px;
@@ -46,20 +61,109 @@ body {
     border: 0;
 }
 
+/* ========== HEADER STYLES ========== */
 .app-header {
     grid-column: 1 / -1;
+
+    /* Menu button and task counter hug the edges, search box fills the middle */
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 12px;
+
     min-height: 48px;
     padding: 8px 16px;
     background-color: var(--color-header-bg);
     color: var(--color-header-text);
 }
 
+.menu-button {
+    display: grid;
+    place-items: center;
+    padding: 4px;
+    border: 0;
+    border-radius: 4px;
+    background: none;
+    cursor: pointer;
+}
+
+.menu-button:focus-visible {
+    outline: 2px solid var(--color-header-text);
+    outline-offset: 2px;
+}
+
+.menu-button__icon {
+    display: block;
+    width: 24px;
+    height: 24px;
+}
+
+/* Quick find box */
+.quick-find {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    gap: 8px;
+
+    width: 100%;
+    max-width: 450px;
+    min-height: 34px;
+    padding: 0 10px;
+    border-radius: 5px;
+    background-color: var(--color-search-bg);
+}
+
+.quick-find:focus-within {
+    background-color: var(--color-search-bg-focus);
+}
+
+.quick-find__icon {
+    display: block;
+    width: 18px;
+    height: 18px;
+}
+
+.quick-find__input {
+    width: 100%;
+    min-width: 0;
+    border: 0;
+    background: none;
+    color: var(--color-header-text);
+    font-family: inherit;
+    font-size: var(--font-size-base);
+}
+
+.quick-find__input::placeholder {
+    color: var(--color-search-placeholder);
+}
+
+.quick-find__input:focus {
+    outline: none;
+}
+
+/* Completed task counter */
+.task-counter {
+    display: grid;
+    grid-template-columns: auto auto;
+    align-items: center;
+    gap: 6px;
+    margin: 0;
+}
+
+.task-counter__icon {
+    display: block;
+    width: 20px;
+    height: 20px;
+}
+
+/* ========== NAVIGATION STYLES ========== */
 .sidebar {
     grid-column: 1;
     padding: 16px 0;
     background-color: var(--color-sidebar-bg);
 }
 
+/* ========== MAIN CONTENT STYLES ========== */
 .content {
     grid-column: 2;
     padding: 24px 32px;

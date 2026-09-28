@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Task Manager &mdash; Inbox</title>
 
+        <!-- Roboto is the required typeface for the entire site -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
@@ -13,12 +14,36 @@
     </head>
 
     <body>
+        <!-- ========== HEADER ========== -->
         <header class="app-header">
+            <button class="menu-button" type="button" aria-label="Toggle navigation menu">
+                <img class="menu-button__icon" src="assets/menu_icon.png" alt="">
+            </button>
+
+            <form class="quick-find" role="search" action="#">
+                <label class="visually-hidden" for="quick-find-input">Quick find</label>
+                <img class="quick-find__icon" src="assets/search_icon.png" alt="">
+                <input
+                    class="quick-find__input"
+                    id="quick-find-input"
+                    name="quick-find"
+                    type="search"
+                    placeholder="Quick find"
+                    autocomplete="off">
+            </form>
+
+            <p class="task-counter">
+                <img class="task-counter__icon" src="assets/check_icon.png" alt="">
+                <span class="task-counter__value">30/5</span>
+                <span class="visually-hidden">tasks completed</span>
+            </p>
         </header>
 
+        <!-- ========== LEFT NAVIGATION ========== -->
         <nav class="sidebar" aria-label="Task categories">
         </nav>
 
+        <!-- ========== MAIN CONTENT ========== -->
         <main class="content">
         </main>
     </body>
