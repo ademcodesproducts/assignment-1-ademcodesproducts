@@ -1,4 +1,67 @@
-/* This is your CSS files */
+:root {
+    --color-header-bg: #dc4c3e;
+    --color-header-text: #ffffff;
+    --color-sidebar-bg: #fefbf2;
+    --color-sidebar-text: #000000;
+    --color-count-text: #7e7d79;
+    --color-content-bg: #ffffff;
+
+    --font-family-base: "Roboto", "Helvetica Neue", Arial, sans-serif;
+    --font-size-base: 14px;
+    --font-size-count: 12px;
+    --font-size-title: 20px;
+
+    --sidebar-width: 300px;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
 body {
-    color: black
+    margin: 0;
+    font-family: var(--font-family-base);
+    font-size: var(--font-size-base);
+    line-height: 1.5;
+    color: var(--color-sidebar-text);
+    background-color: var(--color-content-bg);
+
+    display: grid;
+    grid-template-columns: var(--sidebar-width) 1fr;
+    grid-template-rows: auto 1fr;
+    min-height: 100vh;
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.app-header {
+    grid-column: 1 / -1;
+    min-height: 48px;
+    padding: 8px 16px;
+    background-color: var(--color-header-bg);
+    color: var(--color-header-text);
+}
+
+.sidebar {
+    grid-column: 1;
+    padding: 16px 0;
+    background-color: var(--color-sidebar-bg);
+}
+
+.content {
+    grid-column: 2;
+    padding: 24px 32px;
+    background-color: var(--color-content-bg);
 }
