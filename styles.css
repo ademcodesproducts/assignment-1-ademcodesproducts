@@ -278,3 +278,26 @@ body {
 .task-list__label {
     cursor: pointer;
 }
+
+/* ========== RESPONSIVE STYLES ========== */
+/* At 480px and below the left navigation is hidden and the task list
+   takes the full width, leaving only the header and main content. */
+@media (max-width: 480px) {
+    body {
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar {
+        display: none;
+    }
+
+    .content {
+        grid-column: 1;
+        padding: 16px;
+    }
+
+    .app-header {
+        gap: 8px;
+        padding: 8px 12px;
+    }
+}
