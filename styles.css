@@ -12,6 +12,8 @@
     --color-sidebar-text: #000000;
     --color-count-text: #7e7d79;
     --color-content-bg: #ffffff;
+    --color-checkbox-border: #b0afac;
+    --color-divider: #f0efed;
     --color-search-bg: rgba(255, 255, 255, 0.2);
     --color-search-bg-focus: rgba(255, 255, 255, 0.3);
     --color-search-placeholder: rgba(255, 255, 255, 0.85);
@@ -209,4 +211,70 @@ body {
     grid-column: 2;
     padding: 24px 32px;
     background-color: var(--color-content-bg);
+}
+
+.task-panel__title {
+    margin: 0 0 12px;
+    font-size: var(--font-size-title);
+    font-weight: 700;
+}
+
+.task-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.task-list__item {
+    /* Circle hugs the left, task text fills the rest of the row */
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: start;
+    gap: 12px;
+
+    padding: 10px 0;
+    /* Horizontal rule separating each task, drawn in CSS rather than markup */
+    border-bottom: 1px solid var(--color-divider);
+}
+
+/* Circular checkbox built entirely with CSS, no images */
+.task-list__checkbox {
+    appearance: none;
+    -webkit-appearance: none;
+
+    display: grid;
+    place-items: center;
+    width: 20px;
+    height: 20px;
+    margin: 1px 0 0;
+
+    border: 1.5px solid var(--color-checkbox-border);
+    border-radius: 50%;
+    background: none;
+    cursor: pointer;
+}
+
+.task-list__checkbox:checked {
+    border-color: var(--color-header-bg);
+    background-color: var(--color-header-bg);
+}
+
+/* Checkmark drawn from two borders of a rotated box */
+.task-list__checkbox:checked::after {
+    content: "";
+    width: 5px;
+    height: 9px;
+    margin-top: -2px;
+    border: solid var(--color-header-text);
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.task-list__checkbox:focus-visible {
+    outline: 2px solid var(--color-header-bg);
+    outline-offset: 2px;
+}
+
+.task-list__label {
+    cursor: pointer;
 }
